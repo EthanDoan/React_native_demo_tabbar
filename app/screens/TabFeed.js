@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, TouchableOpacity, Image, StyleSheet, ListView, ActivityIndicator, Text } from 'react-native';
+import { View, Button, TouchableOpacity, Image, StyleSheet, ActivityIndicator, Text } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import * as Icons from '../constants/icons';
 import renderIf from '../ulti/renderIf'
@@ -21,7 +21,7 @@ export default class TabFeed extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
+            // dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
             linkUrl: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=c72f6bd6cb7bc1eac9d46c51aa340481&photoset_id=72157684962879760&user_id=136860488@N03&extras=url_l&format=json&nojsoncallback=1'
         }
     }
@@ -33,7 +33,7 @@ export default class TabFeed extends Component {
                 data = responseJson
                 console.log(data.photoset.photo)
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(data.photoset.photo),//parse array from json
+                    // dataSource: this.state.dataSource.cloneWithRows(data.photoset.photo),//parse array from json
                     isLoading: false
                 })
             })
@@ -52,7 +52,7 @@ export default class TabFeed extends Component {
                 )}
 
                 {/* use external function */}
-                {renderIf(!this.state.isLoading,
+                {/* {renderIf(!this.state.isLoading,
                     <ListView
                         dataSource={this.state.dataSource}
                         renderRow={
@@ -66,7 +66,7 @@ export default class TabFeed extends Component {
                         }
                     >
                     </ListView>
-                )}
+                )} */}
             </View>
         );
     }

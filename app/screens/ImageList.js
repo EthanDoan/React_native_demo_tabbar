@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ListView, ActivityIndicator } from 'react-native';
+import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
 
 
 export default class ImageList extends Component {
@@ -12,7 +12,7 @@ export default class ImageList extends Component {
         super(props);
         this.state = {
             isLoading: true,
-            dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
+            // dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 }),
             link: 'http://hardeepcoder.com/laravel/easyshop/api/products'
         }
     }
@@ -23,7 +23,7 @@ export default class ImageList extends Component {
             .then((responseJson) => {
                 data = responseJson;
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(data),
+                    // dataSource: this.state.dataSource.cloneWithRows(data),
                     isLoading: false
                 })
             })
@@ -44,7 +44,7 @@ export default class ImageList extends Component {
 
         return (
             <View style={styles.container}>
-                <ListView
+                {/* <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
                         <View>
@@ -61,7 +61,7 @@ export default class ImageList extends Component {
                         </View>
                     }
                 >
-                </ListView>
+                </ListView> */}
             </View>
         );
     }
